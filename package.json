@@ -3,6 +3,12 @@
     "displayName": "epScript",
     "description": "Syntax highlighter and snippets for epScript",
     "version": "0.0.1",
+    "author": "Armoha",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/armoha/vscode-epscript.git"
+    },
     "engines": {
         "vscode": "^1.29.0"
     },
