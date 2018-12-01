@@ -1,0 +1,18 @@
+{
+  "name": "eps-server",
+  "version": "0.0.1",
+  "description": "epScript language server",
+  "author": "Armoha",
+  "license": "MIT",
+  "publisher": "vscode",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/armoha/vscode-epscript.git"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+    "vscode-languageserver": "^4.3.0"
+  }
+}

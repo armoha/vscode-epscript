@@ -1,0 +1,23 @@
+{
+    "name": "eps-client",
+    "version": "0.0.1",
+    "description": "Client part of the epScript language server",
+    "author": "Armoha",
+    "license": "MIT",
+    "publisher": "vscode",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/armoha/vscode-epscript.git"
+    },
+    "scripts": {
+        "update-vscode": "node ./node_modules/vscode/bin/install",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "engines": {
+        "vscode": "^1.24.0"
+    },
+    "dependencies": {
+        "vscode": "^1.1.18",
+        "vscode-languageclient": "^4.3.0"
+    }
+}

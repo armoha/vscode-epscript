@@ -1,0 +1,14 @@
+[
+  {
+    "name": "onPluginStart",
+    "description": "Runs only once at the start of the script."
+  },
+  {
+    "name": "beforeTriggerExec",
+    "description": "Runs once per frame at the start of TRIG."
+  },
+  {
+    "name": "afterTriggerExec",
+    "description": "Runs once per frame at the end of TRIG."
+  }
+]
