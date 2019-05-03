@@ -2,6 +2,9 @@
     "name": "epscript",
     "displayName": "epScript",
     "description": "Syntax highlighter and snippets for epScript",
+    "dependencies": {
+        "tar": ">=4.4.2"
+    },
     "version": "0.0.1",
     "author": "Armoha",
     "license": "MIT",
