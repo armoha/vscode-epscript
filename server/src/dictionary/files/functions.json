@@ -1,0 +1,1556 @@
+[
+  {
+    "name": "Accumulate",
+    "arguments": [
+      {
+        "name": "Player",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Comparison",
+        "type": "TrgComparison [AtLeast, AtMost, Exactly]"
+      },
+      {
+        "name": "Number",
+        "type": "number"
+      },
+      {
+        "name": "ResourceType",
+        "type": "TrgResource [Ore, Gas, OreAndGas]"
+      }
+    ],
+    "return": {
+      "name": "Condition(0, Player, Number, 0, Comparison, 4, ResourceType, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Player accumulates quantity resources.",
+    "notes": "Accumulate requires that the player gather enough of a specific resource."
+  },
+  {
+    "name": "Always",
+    "arguments": [],
+    "return": {
+      "name": "Condition(0, 0, 0, 0, 0, 22, 0, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "This Condition is always considered true. Keep in mind that all of a trigger’s conditions must be met for it to activate; so adding Always to a trigger with other conditions has no effect.",
+    "notes": "Use the Always condition for actions you want to take place at the beginning of the game, for instance, setting starting resources, initializing scores, or transmitting instructions. If the Preserve Trigger action is used, the trigger will activate once every two seconds (without Hyper Trigger). If not, the trigger will execute only once per game."
+  },
+  {
+    "name": "Bring",
+    "arguments": [
+      {
+        "name": "Player",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Comparison",
+        "type": "TrgComparison [AtLeast, AtMost, Exactly]"
+      },
+      {
+        "name": "Number",
+        "type": "number"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Location",
+        "type": "TrgLocation [1-255]"
+      }
+    ],
+    "return": {
+      "name": "Condition(Location, Player, Number, Unit, Comparison, 3, 0, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Player brings quantity units to location.",
+    "notes": "This states that a player is required to bring ‘X’ number of units to a specific location. The units can be any player-controlled unit available in the game."
+  },
+  {
+    "name": "Command",
+    "arguments": [
+      {
+        "name": "Player",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Comparison",
+        "type": "TrgComparison [AtLeast, AtMost, Exactly]"
+      },
+      {
+        "name": "Number",
+        "type": "number"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      }
+    ],
+    "return": {
+      "name": "Condition(0, Player, Number, Unit, Comparison, 2, 0, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Player commands quantity units.",
+    "notes": "The selected player must control a certain number of the specified units. This includes rescued units but not hallucinations."
+  },
+  {
+    "name": "CommandLeast",
+    "arguments": [
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      }
+    ],
+    "return": {
+      "name": "Condition(0, 0, 0, Unit, 0, 16, 0, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Current player commands the least units.",
+    "notes": "Command the Least allows you to define an action based on the player that commands the least units. You might use this to give advantages to slower players or to single out weakened players. Note that this condition checks all players, including neutral, computer controlled, and rescuable players."
+  },
+  {
+    "name": "CommandLeastAt",
+    "arguments": [
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Location",
+        "type": "TrgLocation [1-255]"
+      }
+    ],
+    "return": {
+      "name": "Condition(Location, 0, 0, Unit, 0, 17, 0, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Current player commands the least units at location.",
+    "notes": "Command the Least At is similar to 'Command the Least', however, but only compares units at a particular location. The location can be restricted to certain elevations."
+  },
+  {
+    "name": "CommandMost",
+    "arguments": [
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      }
+    ],
+    "return": {
+      "name": "Condition(0, 0, 0, Unit, 0, 6, 0, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Current player commands the most units.",
+    "notes": "Command the Most requires that you command the most of the defined units. These units can be any player-controlled unit available in the game. This condition compares all players in the game, including neutral and rescuable units."
+  },
+  {
+    "name": "CommandMostAt",
+    "arguments": [
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Location",
+        "type": "TrgLocation [1-255]"
+      }
+    ],
+    "return": {
+      "name": "Condition(Location, 0, 0, Unit, 0, 7, 0, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Current player commands the most units at location.",
+    "notes": "Similar to the Command the Most, this condition compares the number of units at a specific location. The location can be restricted to certain elevations."
+  },
+  {
+    "name": "CountdownTimer",
+    "arguments": [
+      {
+        "name": "Comparison",
+        "type": "TrgComparison [AtLeast, AtMost, Exactly]"
+      },
+      {
+        "name": "Time",
+        "type": "number"
+      }
+    ],
+    "return": {
+      "name": "Condition(0, 0, Time, 0, Comparison, 1, 0, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Countdown timer is duration game seconds.",
+    "notes": "This condition checks the time remaining on the countdown timer.  Note:  Unless a trigger has set the countdown timer, it equals zero seconds."
+  },
+  {
+    "name": "Deaths",
+    "arguments": [
+      {
+        "name": "Player",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Comparison",
+        "type": "TrgComparison [AtLeast, AtMost, Exactly]"
+      },
+      {
+        "name": "Number",
+        "type": "number"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      }
+    ],
+    "return": {
+      "name": "Condition(0, Player, Number, Unit, Comparison, 15, 0, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Player has suffered quantity deaths of unit.",
+    "notes": "Gives you the ability to create actions that are launched when a player has suffered a specific number of deaths of any of the units in the game."
+  },
+  {
+    "name": "ElapsedTime",
+    "arguments": [
+      {
+        "name": "Comparison",
+        "type": "TrgComparison [AtLeast, AtMost, Exactly]"
+      },
+      {
+        "name": "Time",
+        "type": "number"
+      }
+    ],
+    "return": {
+      "name": "Condition(0, 0, Time, 0, Comparison, 12, 0, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Elapsed scenario time is duration game seconds.",
+    "notes": "This condition allows you to create triggers that occur after a specified number of game seconds have passed since the start of the scenario."
+  },
+  {
+    "name": "HighestScore",
+    "arguments": [
+      {
+        "name": "ScoreType",
+        "type": "TrgScore [Total, Units, Buildings, UnitsAndBuildings, Kills, Razings, KillsAndRazings, Custom]"
+      }
+    ],
+    "return": {
+      "name": "Condition(0, 0, 0, 0, 0, 9, ScoreType, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Current player has highest score points.",
+    "notes": "This condition is considered true if the trigger's owner has the highest Score. Note that if this is used as the only condition in a trigger, it will activate immediately at the start of the scenario, since all players will be tied for the highest score."
+  },
+  {
+    "name": "Kills",
+    "arguments": [
+      {
+        "name": "Player",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Comparison",
+        "type": "TrgComparison [AtLeast, AtMost, Exactly]"
+      },
+      {
+        "name": "Number",
+        "type": "number"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      }
+    ],
+    "return": {
+      "name": "Condition(0, Player, Number, Unit, Comparison, 5, 0, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Player kills quantity units.",
+    "notes": "This condition tracks total kills by unit type.  Thus, the condition 'Player 1 kills 1 or more any units' is true for the rest of the game once Player 1 kills a unit."
+  },
+  {
+    "name": "LeastKills",
+    "arguments": [
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      }
+    ],
+    "return": {
+      "name": "Condition(0, 0, 0, Unit, 0, 18, 0, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Current player has least kills of unit.",
+    "notes": "This condition is considered true if the trigger's owner has the least kills of the specified Unit."
+  },
+  {
+    "name": "LeastResources",
+    "arguments": [
+      {
+        "name": "ResourceType",
+        "type": "TrgResource [Ore, Gas, OreAndGas]"
+      }
+    ],
+    "return": {
+      "name": "Condition(0, 0, 0, 0, 0, 20, ResourceType, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Current player has least resources.",
+    "notes": "Similar to Least Kills, this condition is considered true if the trigger's owner has the least of the specified resource. Note that Least Resources checks all players, including neutral, computer controlled and rescuable players."
+  },
+  {
+    "name": "LowestScore",
+    "arguments": [
+      {
+        "name": "ScoreType",
+        "type": "TrgScore [Total, Units, Buildings, UnitsAndBuildings, Kills, Razings, KillsAndRazings, Custom]"
+      }
+    ],
+    "return": {
+      "name": "Condition(0, 0, 0, 0, 0, 19, ScoreType, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Current player has lowest score points.",
+    "notes": "This condition evaluates the current Score and is considered true if the current player has the lowest or is tied for the lowest score. Lowest Score checks all players, including neutral and rescuable players."
+  },
+  {
+    "name": "MostKills",
+    "arguments": [
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      }
+    ],
+    "return": {
+      "name": "Condition(0, 0, 0, Unit, 0, 8, 0, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Current player has least kills of unit.",
+    "notes": "This condition is considered true if the trigger's owner has the most kills of the specified Unit."
+  },
+  {
+    "name": "MostResources",
+    "arguments": [
+      {
+        "name": "ResourceType",
+        "type": "TrgResource [Ore, Gas, OreAndGas]"
+      }
+    ],
+    "return": {
+      "name": "Condition(0, 0, 0, 0, 0, 10, ResourceType, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Current player has most resources.",
+    "notes": "Similar to Most Kills, this condition is considered true if the trigger's owner has the most of the specified resource."
+  },
+  {
+    "name": "Never",
+    "arguments": [],
+    "return": {
+      "name": "Condition(0, 0, 0, 0, 0, 23, 0, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Never.",
+    "notes": "The Never condition can be used to temporarily disable actions for testing. A trigger with the Never condition will not activate at any point."
+  },
+  {
+    "name": "Opponents",
+    "arguments": [
+      {
+        "name": "Player",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Comparison",
+        "type": "TrgComparison [AtLeast, AtMost, Exactly]"
+      },
+      {
+        "name": "Number",
+        "type": "number"
+      }
+    ],
+    "return": {
+      "name": "Condition(0, Player, Number, 0, Comparison, 14, 0, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Player has quantity opponents remaining in the game.",
+    "notes": "This condition evaluates how many of the players are opponents of the trigger owner.  By default, all of the other players are considered opponents.  A player does not count as an opponent if either of the following conditions are met:\n\n·The player has been defeated.  This condition only counts players that are still in the game.\n\n·The player is set for allied victory with the trigger owner, AND the player is set for allied victory with all other players set for allied victory with the trigger owner.  (The enemy of an ally is still an enemy.)\n\nAs a result, if opponents equals zero, all of remaining players are set for allied victory with each other. Use this condition with the Victory action to create a scenario that allows for allied victory."
+  },
+  {
+    "name": "Score",
+    "arguments": [
+      {
+        "name": "Player",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "ScoreType",
+        "type": "TrgScore [Total, Units, Buildings, UnitsAndBuildings, Kills, Razings, KillsAndRazings, Custom]"
+      },
+      {
+        "name": "Comparison",
+        "type": "TrgComparison [AtLeast, AtMost, Exactly]"
+      },
+      {
+        "name": "Number",
+        "type": "number"
+      }
+    ],
+    "return": {
+      "name": "Condition(0, Player, Number, 0, Comparison, 21, ScoreType, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Player score type score is quantity",
+    "notes": "This condition allows you to analyze a player's current Score and perform actions based on the value. You can reference any of the individual scoring types from score."
+  },
+  {
+    "name": "Switch",
+    "arguments": [
+      {
+        "name": "Switch",
+        "type": "TrgSwitch [0-255]"
+      },
+      {
+        "name": "State",
+        "type": "TrgSwitchState [Set, Cleared]"
+      }
+    ],
+    "return": {
+      "name": "Condition(0, 0, 0, 0, State, 11, Switch, 0)",
+      "type": "Condition(ConstExpr)"
+    },
+    "description": "Switch is set.",
+    "notes": "This allows you to test against a switch value. Switches are on/off values that can be set with an action. Switches can be used to keep track of which triggers have been activated, to disable or enable certain triggers or to link multiple triggers together. You may also rename switches from this dialog box."
+  },
+  {
+    "name": "CenterView",
+    "arguments": [
+      {
+        "name": "Where",
+        "type": "TrgLocation [1-255]"
+      }
+    ],
+    "return": {
+      "name": "Action(Where, 0, 0, 0, 0, 0, 0, 10, 0, 4)",
+      "type": "Action(ConstExpr)"
+    },
+    "description": "Center view for current player at location.",
+    "notes": "This will cause the affected player’s view to center on the location specified. Note that this action will not occur during a paused game, and it has no affect on computer-controlled players. No other action in the trigger will function until the screen has recentered."
+  },
+  {
+    "name": "Comment",
+    "arguments": [
+      {
+        "name": "Text",
+        "type": "TrgString"
+      }
+    ],
+    "return": {
+      "name": "Action(0, Text, 0, 0, 0, 0, 0, 47, 0, 4)",
+      "type": "Action(ConstExpr)"
+    },
+    "description": "Comment: comment.",
+    "notes": "If this action exists in a trigger, and is enabled, whatever text is listed in the text field will be displayed in the trigger text.  If you disable this action, the normal trigger text will be displayed."
+  },
+  {
+    "name": "CreateUnit",
+    "arguments": [
+      {
+        "name": "Number",
+        "type": "number"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Where",
+        "type": "TrgLocation [1-255]"
+      },
+      {
+        "name": "ForPlayer",
+        "type": "TrgPlayer"
+      }
+    ],
+    "return": {
+      "name": "Action(Where, 0, 0, 0, ForPlayer, 0, Unit, 44, Number, 20)",
+      "type": "Action(ConstExpr)"
+    },
+    "description": "Create quantity unit at location for player",
+    "notes": "This action creates the specified number of units at the specified Location. If a unit is created ‘Anywhere’, it will appear in the center of the map. This action will not function while the game is paused.\n\nKeep in mind that when the conditions are successfully met, the unit(s) will be created for each player that owns the trigger. For example, if All Players own a trigger that creates a Terran Marine for Player 1, and the conditions of the trigger are true for four of the players, Player 1 will get 4 Marines."
+  },
+  {
+    "name": "CreateUnitWithProperties",
+    "arguments": [
+      {
+        "name": "Count",
+        "type": "number"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Where",
+        "type": "TrgLocation [1-255]"
+      },
+      {
+        "name": "Player",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Properties",
+        "type": "TrgProperty: UnitProperty(hitpoint, shield, energy, resource, hanger, cloaked, burrowed, intransit, hallucinated, invincible)"
+      }
+    ],
+    "return": {
+      "name": "Action(Where, 0, 0, 0, Player, Properties, Unit, 11, Count, 28)",
+      "type": "Action(ConstExpr)"
+    },
+    "description": "Create quantity unit at location for player. Apply properties",
+    "notes": "This action works just like Create Unit, except that you can customize the properties of the newly created unit(s)."
+  },
+  {
+    "name": "Defeat",
+    "arguments": [],
+    "return": {
+      "name": "Action(0, 0, 0, 0, 0, 0, 0, 2, 0, 4)",
+      "type": "Action(ConstExpr)"
+    },
+    "description": "End scenario in defeat for current player.",
+    "notes": "This will end the scenario in defeat for the affected players. Any other players in the game will continue."
+  },
+  {
+    "name": "DisplayText",
+    "arguments": [
+      {
+        "name": "Text",
+        "type": "TrgString"
+      },
+      {
+        "name": "AlwaysDisplay=4",
+        "type": "flags"
+      }
+    ],
+    "return": {
+      "name": "Action(0, Text, 0, 0, 0, 0, 0, 9, 0, AlwaysDisplay)",
+      "type": "Action(ConstExpr)"
+    },
+    "description": "Display for current player: text.",
+    "notes": "Displays a specific text message to each owner of the condition. Text messages will only appear if the affected player has Subtitles turned on in the Starcraft Sound Options Menu or if the Always Display option is checked for the action."
+  },
+  {
+    "name": "Draw",
+    "arguments": [],
+    "return": {
+      "name": "Action(0, 0, 0, 0, 0, 0, 0, 56, 0, 4)",
+      "type": "Action(ConstExpr)"
+    },
+    "description": "End the scenario in a draw for all players.",
+    "notes": "This will end the scenario in a draw for the affected players.  Any other players in the game will continue."
+  },
+  {
+    "name": "GiveUnits",
+    "arguments": [
+      {
+        "name": "Count",
+        "type": "TrgCount [0: All]"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Owner",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Where",
+        "type": "TrgLocation [1-255]"
+      },
+      {
+        "name": "NewOwner",
+        "type": "TrgPlayer"
+      }
+    ],
+    "return": {
+      "name": "Action(Where, 0, 0, 0, Owner, NewOwner, Unit, 48, Count, 20)",
+      "type": "Action(ConstExpr)"
+    },
+    "description": "Give quantity units owned by player at location to player.",
+    "notes": "This action allows you to transfer units from one player to another."
+  },
+  {
+    "name": "KillUnit",
+    "arguments": [
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Player",
+        "type": "TrgPlayer"
+      }
+    ],
+    "return": {
+      "name": "Action(0, 0, 0, 0, Player, 0, Unit, 22, 0, 20)",
+      "type": "Action(ConstExpr)"
+    },
+    "description": "Kill all units for player.",
+    "notes": "This action kills all units of a particular type for the player specified. This action has no effect while the game is paused."
+  },
+  {
+    "name": "KillUnitAt",
+    "arguments": [
+      {
+        "name": "Count",
+        "type": "TrgCount [0: All]"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Where",
+        "type": "TrgLocation [1-255]"
+      },
+      {
+        "name": "ForPlayer",
+        "type": "TrgPlayer"
+      }
+    ],
+    "return": {
+      "name": "Action(Where, 0, 0, 0, ForPlayer, 0, Unit, 23, Count, 20)",
+      "type": "Action(ConstExpr)"
+    },
+    "description": "Kill quantity units for player at location.",
+    "notes": "Similar to the ‘Kill Unit’ action, the ‘Kill Unit at Location’ action gives you the ability to kill a specified number of units of a particular type belonging to a certain player at the specified Location. This action will not function while the game is paused."
+  },
+  {
+    "name": "LeaderBoardControlAt",
+    "arguments": [
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Location",
+        "type": "TrgLocation [1-255]"
+      },
+      {
+        "name": "Label",
+        "type": "TrgString"
+      }
+    ],
+    "return": {},
+    "description": "Show Leader Board for most control of units at location. Display label: label",
+    "notes": "This will display the Leader Board to all players based on who controls the most of a particular unit type at a Location defined on the map."
+  },
+  {
+    "name": "LeaderBoardControl",
+    "arguments": [
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Label",
+        "type": "TrgString"
+      }
+    ],
+    "return": {},
+    "description": "Show Leader Board for most control of unit. Display label: label",
+    "notes": "This will display the Leader Board to all players based on who controls the most of a particular unit in the scenario."
+  },
+  {
+    "name": "LeaderBoardGreed",
+    "arguments": [
+      {
+        "name": "Goal",
+        "type": "number"
+      }
+    ],
+    "return": {},
+    "description": "Show Greed Leader Board for player closest to accumulation of number ore and gas.",
+    "notes": "This will display the Leader Board to all players based on who is closest to reaching the goal of accumulating the most ore and gas."
+  },
+  {
+    "name": "LeaderBoardKills",
+    "arguments": [
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Label",
+        "type": "TrgString"
+      }
+    ],
+    "return": {},
+    "description": "Show Leader Board for most kills of unit. Display label: label",
+    "notes": "This will display the Leader Board to all players based on who has the most kills in the scenario."
+  },
+  {
+    "name": "LeaderBoardScore",
+    "arguments": [
+      {
+        "name": "ScoreType",
+        "type": "TrgScore [Total, Units, Buildings, UnitsAndBuildings, Kills, Razings, KillsAndRazings, Custom]"
+      },
+      {
+        "name": "Label",
+        "type": "TrgString"
+      }
+    ],
+    "return": {},
+    "description": "Show Leader Board for most points. Display label: label",
+    "notes": "This will display the Leader Board to all players based on who has the most points."
+  },
+  {
+    "name": "LeaderBoardResources",
+    "arguments": [
+      {
+        "name": "ResourceType",
+        "type": "TrgResource [Ore, Gas, OreAndGas]"
+      },
+      {
+        "name": "Label",
+        "type": "TrgString"
+      }
+    ],
+    "return": {},
+    "description": "Show Leader Board for accumulation of most resource. Display label: label",
+    "notes": "This will display the Leader Board to all players based on who has the most resources."
+  },
+  {
+    "name": "LeaderBoardGoalControlAt",
+    "arguments": [
+      {
+        "name": "Goal",
+        "type": "number"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Location",
+        "type": "TrgLocation [1-255]"
+      },
+      {
+        "name": "Label",
+        "type": "TrgString"
+      }
+    ],
+    "return": {},
+    "description": "Show Leader Board for player closest to control of number of units at location. Display label: label",
+    "notes": "This will display the Leader Board to all players based on the amount of units controlled at a certain Location that are required to achieve a goal. In this type of leader board, the lower the number the better."
+  },
+  {
+    "name": "LeaderBoardGoalControl",
+    "arguments": [
+      {
+        "name": "Goal",
+        "type": "number"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Label",
+        "type": "TrgString"
+      }
+    ],
+    "return": {},
+    "description": "Show Leader Board for player closest to control of number of unit. Display label: label",
+    "notes": "This will display the Leader Board to all players based on the amount of units controlled on the map that are required to achieve a goal. In this type of leader board, the lower the number the better."
+  },
+  {
+    "name": "LeaderBoardGoalKills",
+    "arguments": [
+      {
+        "name": "Goal",
+        "type": "number"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Label",
+        "type": "TrgString"
+      }
+    ],
+    "return": {},
+    "description": "Show Leader Board for player closest to number kills of unit. Display label: label",
+    "notes": "This will display the Leader Board to all players based on who have the most kills required to achieve a goal. In this type of leader board, the lower the number the better."
+  },
+  {
+    "name": "LeaderBoardGoalScore",
+    "arguments": [
+      {
+        "name": "Goal",
+        "type": "number"
+      },
+      {
+        "name": "ScoreType",
+        "type": "TrgScore [Total, Units, Buildings, UnitsAndBuildings, Kills, Razings, KillsAndRazings, Custom]"
+      },
+      {
+        "name": "Label",
+        "type": "TrgString"
+      }
+    ],
+    "return": {},
+    "description": "Show Leader Board for player closest to number points. Display label: label",
+    "notes": "This will display the Leader Board to all players based on who have the most points required to achieve a goal. In this type of leader board, the lower the number the better."
+  },
+  {
+    "name": "LeaderBoardGoalResources",
+    "arguments": [
+      {
+        "name": "Goal",
+        "type": "number"
+      },
+      {
+        "name": "ResourceType",
+        "type": "TrgResource [Ore, Gas, OreAndGas]"
+      },
+      {
+        "name": "Label",
+        "type": "TrgString"
+      }
+    ],
+    "return": {},
+    "description": "Show Leader Board for player closest to accumulation of number resource. Display label: label",
+    "notes": "This will display the Leader Board to all players based on who have the most resources required to achieve a goal. In this type of leader board, the lower the number the better."
+  },
+  {
+    "name": "LeaderBoardComputerPlayers",
+    "arguments": [
+      {
+        "name": "State",
+        "type": "TrgPropState [Enable, Disable, Toogle]"
+      }
+    ],
+    "return": {},
+    "description": "Set use of computer players in leaderboard calculations.",
+    "notes": "This action allows you to specify whether neutral, rescue and computer controlled players will be included in the leader board calculations. By default, all computer players are included in the tally."
+  },
+  {
+    "name": "MinimapPing",
+    "arguments": [
+      {
+        "name": "Where",
+        "type": "TrgLocation [1-255]"
+      }
+    ],
+    "return": {},
+    "description": "Show minimap ping for current player at location.",
+    "notes": "This sends out a ‘ping’ on the mini map at the specified location. This can be used to draw attention to a particular spot or to track a moving location. Note that pressing the spacebar in the game after receiving the ping will not center your screen on the ping Location. Only transmissions allow you to jump to a different location with the spacebar."
+  },
+  {
+    "name": "ModifyUnitEnergy",
+    "arguments": [
+      {
+        "name": "Count",
+        "type": "TrgCount [0: All]"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Owner",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Where",
+        "type": "TrgLocation [1-255]"
+      },
+      {
+        "name": "Percent",
+        "type": "number [0-100]"
+      }
+    ],
+    "return": {},
+    "description": "Set energy points for quantity units owned by player at location to percent%.",
+    "notes": "This action will modify the specified unit(s) spell-casting energy.  The energy will be changed based on the percentage specified in the action trigger."
+  },
+  {
+    "name": "ModifyUnitHangarCount",
+    "arguments": [
+      {
+        "name": "Add",
+        "type": "number [0-10]"
+      },
+      {
+        "name": "Count",
+        "type": "TrgCount [0: All]"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Owner",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Where",
+        "type": "TrgLocation [1-255]"
+      }
+    ],
+    "return": {},
+    "description": "Add at most quantity to hangar for quantity units at location owned by player.",
+    "notes": "This action will modify the contents of a unit(s) hangar.  For example, this will allow you to add 5 additional Interceptors to the Carrier’s hangar."
+  },
+  {
+    "name": "ModifyUnitHitPoints",
+    "arguments": [
+      {
+        "name": "Count",
+        "type": "TrgCount [0: All]"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Owner",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Where",
+        "type": "TrgLocation [1-255]"
+      },
+      {
+        "name": "Percent",
+        "type": "number [0-100]"
+      }
+    ],
+    "return": {},
+    "description": "Set hit points for quantity units owned by player at location to percent%.",
+    "notes": "This action will modify the specified unit(s) hit points.  The hit points will be changed based on the percentage specified in the action trigger."
+  },
+  {
+    "name": "ModifyUnitResourceAmount",
+    "arguments": [
+      {
+        "name": "Count",
+        "type": "TrgCount [0: All]"
+      },
+      {
+        "name": "Owner",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Where",
+        "type": "TrgLocation [1-255]"
+      },
+      {
+        "name": "NewValue",
+        "type": "number"
+      }
+    ],
+    "return": {},
+    "description": "Set resource amount for quantity resource sources owned by player at location to quantity.",
+    "notes": "This action allows you to modify the amount of resources contained in the various mineral stores.  For example, you could modify a Vespene Geyser so that it had 0 resources if you desire."
+  },
+  {
+    "name": "ModifyUnitShields",
+    "arguments": [
+      {
+        "name": "Count",
+        "type": "TrgCount [0: All]"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Owner",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Where",
+        "type": "TrgLocation [1-255]"
+      },
+      {
+        "name": "Percent",
+        "type": "number [0-100]"
+      }
+    ],
+    "return": {},
+    "description": "Set shield points for quantity units owned by player at location to percent%.",
+    "notes": "This action will modify the specified unit(s) shield points.  The shield points will be changed based on the percentage specified in the action trigger."
+  },
+  {
+    "name": "MoveLocation",
+    "arguments": [
+      {
+        "name": "Location",
+        "type": "TrgLocation [1-255]"
+      },
+      {
+        "name": "OnUnit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Owner",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "DestLocation",
+        "type": "TrgLocation [1-255]"
+      }
+    ],
+    "return": {},
+    "description": "Center location labeled location on units owned by player at location.",
+    "notes": "This action will center a Location on a unit. In addition to choosing a location to move, you must specify a search location. The Action will ignore any units outside the search location.  If no unit is found, the Location will move to the center of the search location. You can combine this Action with Center View to center the screen on a particular unit."
+  },
+  {
+    "name": "MoveUnit",
+    "arguments": [
+      {
+        "name": "Count",
+        "type": "TrgCount [0: All]"
+      },
+      {
+        "name": "UnitType",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Owner",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "StartLocation",
+        "type": "TrgLocation [1-255]"
+      },
+      {
+        "name": "DestLocation",
+        "type": "TrgLocation [1-255]"
+      }
+    ],
+    "return": {},
+    "description": "Move quantity units for player at location to destination.",
+    "notes": "This action will teleport a specified number of units (or unit) from one Location to another."
+  },
+  {
+    "name": "MuteUnitSpeech",
+    "arguments": [],
+    "return": {},
+    "description": "Mute all non-trigger unit sounds for current player.",
+    "notes": "This action will mute unit speech and set to half-volume all sound effects that the game normally produces, including music and combat sounds. This is particularly useful when you are playing a Transmission Action or any time you want to make sure a triggered sound is heard clearly."
+  },
+  {
+    "name": "Order",
+    "arguments": [
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Owner",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "StartLocation",
+        "type": "TrgLocation [1-255]"
+      },
+      {
+        "name": "OrderType",
+        "type": "TrgOrder [Move, Patrol, Attack]"
+      },
+      {
+        "name": "DestLocation",
+        "type": "TrgLocation [1-255]"
+      }
+    ],
+    "return": {},
+    "description": "Issue order to all units owned by player at location: order to destination.",
+    "notes": "This action allows you to issue orders through a trigger to a unit (or units) that will change their behavior in a scenario.  The different orders are attack, move and patrol.  For a list of what these orders do, please see the program documentation."
+  },
+  {
+    "name": "PauseGame",
+    "arguments": [],
+    "return": {},
+    "description": "Pause the game.",
+    "notes": "This action will put the game in a pause state. If a matching Unpause Game is not found, the program automatically unpauses the game when the current trigger is finished. Note that pause game has no effect in multiplayer scenarios or against computer controlled players."
+  },
+  {
+    "name": "PauseTimer",
+    "arguments": [],
+    "return": {},
+    "description": "Pause the countdown timer.",
+    "notes": "This action will put the countdown timer in a pause state."
+  },
+  {
+    "name": "PlayWAV",
+    "arguments": [
+      {
+        "name": "WAVName",
+        "type": "TrgString"
+      }
+    ],
+    "return": {},
+    "description": "Play WAV file",
+    "notes": "This will play a WAV file for the trigger’s owner. For more information on importing .WAV files, see the Working with .WAV Files section."
+  },
+  {
+    "name": "PreserveTrigger",
+    "arguments": [],
+    "return": {},
+    "description": "Preserve Trigger.",
+    "notes": "Normally, a trigger will only run once for each owner. Triggers automatically disable themselves once they run through all of their actions, unless the Preserve Trigger action is present. If you want a trigger to remain in effect throughout the scenario, add the Preserve Trigger action to its action list."
+  },
+  {
+    "name": "RemoveUnit",
+    "arguments": [
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Player",
+        "type": "TrgPlayer"
+      }
+    ],
+    "return": {},
+    "description": "Remove all units for player.",
+    "notes": "Remove Unit works just like Kill Unit, except that the affected units will simply disappear without actually dying. This action has no effect while the game is paused."
+  },
+  {
+    "name": "RemoveUnitAt",
+    "arguments": [
+      {
+        "name": "Count",
+        "type": "TrgCount [0: All]"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Where",
+        "type": "TrgLocation [1-255]"
+      },
+      {
+        "name": "ForPlayer",
+        "type": "TrgPlayer"
+      }
+    ],
+    "return": {},
+    "description": "Remove quantity units for player at location.",
+    "notes": "This action works just like Remove Unit.  In addition, you may specify a location and a quantity of units that the action will affect.  It has no effect on a paused game."
+  },
+  {
+    "name": "RunAIScript",
+    "arguments": [
+      {
+        "name": "Script",
+        "type": "TrgAIScript"
+      }
+    ],
+    "return": {},
+    "description": "Execute AI script script.",
+    "notes": "This instructs the specified computer-controlled players to use a certain AI script. The AI script determines the overall aggressiveness and effectiveness of the computer player, and by changing the AI script during the scenario, you can effectively handicap the scenario. For a listing of the AI scripts that are available in the campaign editor, see the AI Script Listing."
+  },
+  {
+    "name": "RunAIScriptAt",
+    "arguments": [
+      {
+        "name": "Script",
+        "type": "TrgAIScript"
+      },
+      {
+        "name": "Where",
+        "type": "TrgLocation [1-255]"
+      }
+    ],
+    "return": {},
+    "description": "Execute AI script script at location.",
+    "notes": "Identical to Run AI Script but specifies a location to run the script at. Certain scripts are designed specifically to target a Location.  For a listing of the AI scripts that are available in the campaign editor, see the AI Script Listing."
+  },
+  {
+    "name": "SetAllianceStatus",
+    "arguments": [
+      {
+        "name": "Player",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Status",
+        "type": "TrgAllyStatus [Enemy, Ally, AlliedVictory]"
+      }
+    ],
+    "return": {},
+    "description": "Set Player to Ally status.",
+    "notes": "This allows you to set the value of the affected players’ alliance status."
+  },
+  {
+    "name": "SetCountdownTimer",
+    "arguments": [
+      {
+        "name": "TimeModifier",
+        "type": "TrgModifier [SetTo, Add, Subtract]"
+      },
+      {
+        "name": "Number",
+        "type": "number"
+      }
+    ],
+    "return": {},
+    "description": "Modify Countdown Timer: Set duration seconds.",
+    "notes": "This allows you to set a countdown timer, in game seconds, which will appear at the top of the game screen and count down automatically. There is one countdown timer shared by all players.  Any time the countdown timer is not equal to zero, it is displayed to all players.You can also use this action to add or subtract time from the countdown timer."
+  },
+  {
+    "name": "SetDeaths",
+    "arguments": [
+      {
+        "name": "Player",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Modifier",
+        "type": "TrgModifier [SetTo, Add, Subtract]"
+      },
+      {
+        "name": "Number",
+        "type": "number"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      }
+    ],
+    "return": {},
+    "description": "Modify death counts for player: Set quantity for unit.",
+    "notes": "This will set the death counter of a particular unit, for the specified player, to a value listed in the action."
+  },
+  {
+    "name": "SetDoodadState",
+    "arguments": [
+      {
+        "name": "State",
+        "type": "TrgPropState [Enable, Disable, Toogle]"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Owner",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Where",
+        "type": "TrgLocation [1-255]"
+      }
+    ],
+    "return": {},
+    "description": "Set doodad state for units for player at location.",
+    "notes": "The Installation tileset contains several doodads that can be enabled or disabled. The doors and concealed turrets can be set to start in one state or another by double clicking on them in the main window, but this action allows you to change their state during the course of the scenario. A location must be drawn around the doodads that you wish to affect with this action.Enabling a door closes it, and enabling a turret causes it to activate and attack any enemies of the trigger owner."
+  },
+  {
+    "name": "SetInvincibility",
+    "arguments": [
+      {
+        "name": "State",
+        "type": "TrgPropState [Enable, Disable, Toogle]"
+      },
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Owner",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Where",
+        "type": "TrgLocation [1-255]"
+      }
+    ],
+    "return": {},
+    "description": "Set invincibility for units owned by player at location",
+    "notes": "This action makes the specified unit or units Invincible. Invincible units cannot be targeted or attacked, and take no damage."
+  },
+  {
+    "name": "SetMissionObjectives",
+    "arguments": [
+      {
+        "name": "Text",
+        "type": "TrgString"
+      }
+    ],
+    "return": {},
+    "description": "Set Mission Objectives to: text.",
+    "notes": "Changes the mission objectives text to something other than what was defined at the outset of the level. While this doesn’t actually change the victory or defeat conditions for the scenario, it can be used to notify the players of changes to the scenario’s objectives."
+  },
+  {
+    "name": "SetNextScenario",
+    "arguments": [
+      {
+        "name": "ScenarioName",
+        "type": "TrgString"
+      }
+    ],
+    "return": {},
+    "description": "Load scenario after completion of current game.",
+    "notes": "This trigger offers the ability to link multiple user-created maps together to form one large campaign. To do so, choose this trigger, and click on the scenario option that is listed. This gives you the ability to select a previously designed map, and link it to this level. Note that this is a single player feature only. For more information on setting the next scenario, see the Creating a Campaign."
+  },
+  {
+    "name": "SetResources",
+    "arguments": [
+      {
+        "name": "Player",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Modifier",
+        "type": "TrgModifier [SetTo, Add, Subtract]"
+      },
+      {
+        "name": "Amount",
+        "type": "number"
+      },
+      {
+        "name": "ResourceType",
+        "type": "TrgResource [Ore, Gas, OreAndGas]"
+      }
+    ],
+    "return": {},
+    "description": "Modify resources for player: Set quantity resource.",
+    "notes": "The set resources action allows you to increase, decrease, or set the amount of resources that a player has."
+  },
+  {
+    "name": "SetScore",
+    "arguments": [
+      {
+        "name": "Player",
+        "type": "TrgPlayer"
+      },
+      {
+        "name": "Modifier",
+        "type": "TrgModifier [SetTo, Add, Subtract]"
+      },
+      {
+        "name": "Amount",
+        "type": "number"
+      },
+      {
+        "name": "ScoreType",
+        "type": "TrgScore [Total, Units, Buildings, UnitsAndBuildings, Kills, Razings, KillsAndRazings, Custom]"
+      }
+    ],
+    "return": {},
+    "description": "Modify score for player: Set quantity points.",
+    "notes": "The set score action lets you the increase, decrease, or set the number of points that a player currently has."
+  },
+  {
+    "name": "SetSwitch",
+    "arguments": [
+      {
+        "name": "Switch",
+        "type": "TrgSwitch [0-255]"
+      },
+      {
+        "name": "State",
+        "type": "TrgSwitchAction [Set, Clear, Toogle, Random]"
+      }
+    ],
+    "return": {},
+    "description": "Set switch.",
+    "notes": "The set switch action can be used to:·Set a switch to its set position.·Clear a switch to its cleared position.·Toggle a switch: if a switch is cleared, it becomes set; if it is set, it becomes cleared.·Randomly choose between the set or cleared position.You may also modify the switch names from this dialog box."
+  },
+  {
+    "name": "TalkingPortrait",
+    "arguments": [
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Time",
+        "type": "number"
+      }
+    ],
+    "return": {},
+    "description": "Show unit talking to current player for duration milliseconds.",
+    "notes": "This will show the unit picture of your choice in the unit window in the game screen for the specified amount of time."
+  },
+  {
+    "name": "Transmission",
+    "arguments": [
+      {
+        "name": "Unit",
+        "type": "TrgUnit [0-227]"
+      },
+      {
+        "name": "Where",
+        "type": "TrgLocation [1-255]"
+      },
+      {
+        "name": "WAVName",
+        "type": "TrgString"
+      },
+      {
+        "name": "TimeModifier",
+        "type": "TrgModifier [SetTo, Add, Subtract]"
+      },
+      {
+        "name": "Time",
+        "type": "number"
+      },
+      {
+        "name": "Text",
+        "type": "TrgString"
+      },
+      {
+        "name": "AlwaysDisplay=4",
+        "type": "flags"
+      }
+    ],
+    "return": {},
+    "description": "Send transmission to current player from unit at location.\nPlay WAV file. Modify transmission duration: Set number milliseconds.\nDisplay the following text: Text",
+    "notes": "A transmission is a combination of several different actions. First, you need to specify which unit at a location you want to send the transmission. This unit’s portrait will be displayed for the duration of the transmission. You then need to select a WAV file to play, how long to animate the unit portrait, and what text message to display for players that have Subtitles turned on. The player receiving the transmission will receive a minimap ping when the transmission starts, and can press the space bar to center their screen on the unit sending the transmission. Note that this action has no effect on computer players, and it will prevent any other action (in the same trigger) from resuming until it has finished."
+  },
+  {
+    "name": "UnMuteUnitSpeech",
+    "arguments": [],
+    "return": {},
+    "description": "Unmute all non-trigger unit sounds for current player.",
+    "notes": "This action sets the sound effects for the game back to their original state."
+  },
+  {
+    "name": "UnpauseGame",
+    "arguments": [],
+    "return": {},
+    "description": "Unpause the game.",
+    "notes": "This action resumes the game from a paused session. Note that this has no effect in multiplayer maps and will not effect any computer opponents in single player maps."
+  },
+  {
+    "name": "UnpauseTimer",
+    "arguments": [],
+    "return": {},
+    "description": "Unpause the countdown timer.",
+    "notes": "This action will resume the timer from a paused session."
+  },
+  {
+    "name": "Victory",
+    "arguments": [],
+    "return": {},
+    "description": "End scenario in victory for current player.",
+    "notes": "The game ends in victory for the trigger’s owner.  Any players who are not executing a victory action are defeated."
+  },
+  {
+    "name": "Wait",
+    "arguments": [
+      {
+        "name": "Time",
+        "type": "number"
+      }
+    ],
+    "return": {},
+    "description": "[Warning] Don't use Wait action UNLESS YOU KNOW WHAT YOU'RE DOING!",
+    "notes": "The wait action is used to delay other actions for the specified number of milliseconds.  Because it is a blocking action, no other actions in the same trigger and no other blocking actions in other triggers will activate until it is done. For a list of blocking actions, see Triggers: Guidelines."
+  },
+  {
+    "name": "SetMemory",
+    "arguments": [
+      {
+        "name": "dest",
+        "type": "Address"
+      },
+      {
+        "name": "modtype",
+        "type": "TrgModifier [SetTo, Add, Subtract]"
+      },
+      {
+        "name": "value",
+        "type": "number"
+      }
+    ],
+    "return": {},
+    "description": "Modify death counts for player: Set quantity for unit.",
+    "notes": "This will set the death counter of a particular unit, for the specified player, to a value listed in the action."
+  },
+  {
+    "name": "SetMemoryEPD",
+    "arguments": [
+      {
+        "name": "dest",
+        "type": "EPD"
+      },
+      {
+        "name": "modtype",
+        "type": "TrgModifier [SetTo, Add, Subtract]"
+      },
+      {
+        "name": "value",
+        "type": "number"
+      }
+    ],
+    "return": {},
+    "description": "Modify death counts for player: Set quantity for unit.",
+    "notes": "This will set the death counter of a particular unit, for the specified player, to a value listed in the action."
+  },
+  {
+    "name": "SetNextPtr",
+    "arguments": [
+      {
+        "name": "trg",
+        "type": "Trigger"
+      },
+      {
+        "name": "dest",
+        "type": "NextPtr"
+      }
+    ],
+    "return": {},
+    "description": "SetMemory(trg + 4, SetTo, dest)",
+    "notes": "This will set the death counter of a particular unit, for the specified player, to a value listed in the action."
+  },
+  {
+    "name": "Memory",
+    "arguments": [
+      {
+        "name": "dest",
+        "type": "Address"
+      },
+      {
+        "name": "cmptype",
+        "type": "TrgComparison [AtLeast, AtMost, Exactly]"
+      },
+      {
+        "name": "value",
+        "type": "number"
+      }
+    ],
+    "description": "Player has suffered quantity deaths of unit.",
+    "notes": "Gives you the ability to create actions that are launched when a player has suffered a specific number of deaths of any of the units in the game."
+  },
+  {
+    "name": "MemoryEPD",
+    "arguments": [
+      {
+        "name": "dest",
+        "type": "EPD"
+      },
+      {
+        "name": "cmptype",
+        "type": "TrgComparison [AtLeast, AtMost, Exactly]"
+      },
+      {
+        "name": "value",
+        "type": "number"
+      }
+    ],
+    "description": "Player has suffered quantity deaths of unit.",
+    "notes": "Gives you the ability to create actions that are launched when a player has suffered a specific number of deaths of any of the units in the game."
+  }
+]

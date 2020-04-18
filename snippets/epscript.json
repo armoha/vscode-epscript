@@ -1,0 +1,686 @@
+{
+    "For Loop": {
+        "prefix": "for",
+        "body": [
+            "for (var ${1:index} = 0; ${1:index} < ${2:array}.length; ${1:index}++) {",
+            "\tconst ${3:element} = ${2:array}[${1:index}];",
+            "\t$0",
+            "}"
+        ],
+        "description": "For Loop"
+    },
+    "For-Each Loop": {
+        "prefix": "foreach",
+        "body": [
+            "foreach(${2:element} : ${1:array}) {",
+            "\t$0",
+            "});"
+        ],
+        "description": "For-Each Loop"
+    },
+    "Function Statement": {
+        "prefix": "function",
+        "body": [
+            "function ${1:name}(${2:params}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Function Statement"
+    },
+    "If Statement": {
+        "prefix": "if",
+        "body": [
+            "if (${1:condition}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "If Statement"
+    },
+    "If-Else Statement": {
+        "prefix": "ifelse",
+        "body": [
+            "if (${1:condition}) {",
+            "\t$0",
+            "} else {",
+            "\t",
+            "}"
+        ],
+        "description": "If-Else Statement"
+    },
+    "ElseIf Statement": {
+        "prefix": "elseif",
+        "body": [
+            "else if (${1:condition}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "ElseIf Statement"
+    },
+    "Switch Statement": {
+        "prefix": "switch",
+        "body": [
+            "EUDSwitch(${1:key});",
+            "\tEUDSwitchCase()(${2:value});",
+            "\t\t$0",
+            "\t\tbreak;",
+            "",
+            "\tEUDSwitchDefault()();",
+            "\t\tbreak;",
+            "EUDEndSwitch();"
+        ],
+        "description": "Switch Statement"
+    },
+    "While Statement": {
+        "prefix": "while",
+        "body": [
+            "while (${1:condition}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "While Statement"
+    },
+    "Import external module.": {
+        "prefix": "import as statement",
+        "body": [
+            "import ${1:module} as ${2:name};",
+            "$0"
+        ],
+        "description": "Import external module."
+    },
+    "Log to the console": {
+        "prefix": "log",
+        "body": [
+            "py_print($1);",
+            "$0"
+        ],
+        "description": "Log to the console"
+    },
+    "Accumulate": {
+        "prefix": "Accumulate",
+        "body": [
+            "Accumulate(${1:Player}, ${2:Comparison}, ${3:Number}, ${4:ResourceType})"
+        ],
+        "description": "Player accumulates quantity resources."
+    },
+    "Always": {
+        "prefix": "Always",
+        "body": [
+            "Always()"
+        ],
+        "description": "This Condition is always considered true. Keep in mind that all of a trigger’s conditions must be met for it to activate; so adding Always to a trigger with other conditions has no effect."
+    },
+    "Bring": {
+        "prefix": "Bring",
+        "body": [
+            "Bring(${1:Player}, ${2:Comparison}, ${3:Number}, ${4:Unit}, ${5:Location})"
+        ],
+        "description": "Player brings quantity units to location."
+    },
+    "Command": {
+        "prefix": "Command",
+        "body": [
+            "Command(${1:Player}, ${2:Comparison}, ${3:Number}, ${4:Unit})"
+        ],
+        "description": "Player commands quantity units."
+    },
+    "CommandLeast": {
+        "prefix": "CommandLeast",
+        "body": [
+            "CommandLeast(${1:Unit})"
+        ],
+        "description": "Current player commands the least units."
+    },
+    "CommandLeastAt": {
+        "prefix": "CommandLeastAt",
+        "body": [
+            "CommandLeastAt(${1:Unit}, ${2:Location})"
+        ],
+        "description": "Current player commands the least units at location."
+    },
+    "CommandMost": {
+        "prefix": "CommandMost",
+        "body": [
+            "CommandMost(${1:Unit})"
+        ],
+        "description": "Current player commands the most units."
+    },
+    "CommandMostAt": {
+        "prefix": "CommandMostAt",
+        "body": [
+            "CommandMostAt(${1:Unit}, ${2:Location})"
+        ],
+        "description": "Current player commands the most units at location."
+    },
+    "CountdownTimer": {
+        "prefix": "CountdownTimer",
+        "body": [
+            "CountdownTimer(${1:Comparison}, ${2:Time})"
+        ],
+        "description": "Countdown timer is duration game seconds."
+    },
+    "Deaths": {
+        "prefix": "Deaths",
+        "body": [
+            "Deaths(${1:Player}, ${2:Comparison}, ${3:Number}, ${4:Unit})"
+        ],
+        "description": "Player has suffered quantity deaths of unit."
+    },
+    "ElapsedTime": {
+        "prefix": "ElapsedTime",
+        "body": [
+            "ElapsedTime(${1:Comparison}, ${2:Time})"
+        ],
+        "description": "Elapsed scenario time is duration game seconds."
+    },
+    "HighestScore": {
+        "prefix": "HighestScore",
+        "body": [
+            "HighestScore(${1:ScoreType})"
+        ],
+        "description": "Current player has highest score points."
+    },
+    "Kills": {
+        "prefix": "Kills",
+        "body": [
+            "Kills(${1:Player}, ${2:Comparison}, ${3:Number}, ${4:Unit})"
+        ],
+        "description": "Player kills quantity units."
+    },
+    "LeastKills": {
+        "prefix": "LeastKills",
+        "body": [
+            "LeastKills(${1:Unit})"
+        ],
+        "description": "Current player has least kills of unit."
+    },
+    "LeastResources": {
+        "prefix": "LeastResources",
+        "body": [
+            "LeastResources(${1:ResourceType})"
+        ],
+        "description": "Current player has least resources."
+    },
+    "LowestScore": {
+        "prefix": "LowestScore",
+        "body": [
+            "LowestScore(${1:ScoreType})"
+        ],
+        "description": "Current player has lowest score points."
+    },
+    "MostKills": {
+        "prefix": "MostKills",
+        "body": [
+            "MostKills(${1:Unit})"
+        ],
+        "description": "Current player has least kills of unit."
+    },
+    "MostResources": {
+        "prefix": "MostResources",
+        "body": [
+            "MostResources(${1:ResourceType})"
+        ],
+        "description": "Current player has most resources."
+    },
+    "Never": {
+        "prefix": "Never",
+        "body": [
+            "Never()"
+        ],
+        "description": "Never."
+    },
+    "Opponents": {
+        "prefix": "Opponents",
+        "body": [
+            "Opponents(${1:Player}, ${2:Comparison}, ${3:Number})"
+        ],
+        "description": "Player has quantity opponents remaining in the game."
+    },
+    "Score": {
+        "prefix": "Score",
+        "body": [
+            "Score(${1:Player}, ${2:ScoreType}, ${3:Comparison}, ${4:Number})"
+        ],
+        "description": "Player score type score is quantity"
+    },
+    "Switch": {
+        "prefix": "Switch",
+        "body": [
+            "Switch(${1:Switch}, ${2:State})"
+        ],
+        "description": "Switch is set."
+    },
+    "CenterView": {
+        "prefix": "CenterView",
+        "body": [
+            "CenterView(${1:Where});"
+        ],
+        "description": "Center view for current player at location."
+    },
+    "Comment": {
+        "prefix": "Comment",
+        "body": [
+            "Comment(${1:Text});"
+        ],
+        "description": "Comment: comment."
+    },
+    "CreateUnit": {
+        "prefix": "CreateUnit",
+        "body": [
+            "CreateUnit(${1:Number}, ${2:Unit}, ${3:Where}, ${4:ForPlayer});"
+        ],
+        "description": "Create quantity unit at location for player"
+    },
+    "CreateUnitWithProperties": {
+        "prefix": "CreateUnitWithProperties",
+        "body": [
+            "CreateUnitWithProperties(${1:Count}, ${2:Unit}, ${3:Where}, ${4:Player}, ${5:Properties});"
+        ],
+        "description": "Create quantity unit at location for player. Apply properties"
+    },
+    "Defeat": {
+        "prefix": "Defeat",
+        "body": [
+            "Defeat();"
+        ],
+        "description": "End scenario in defeat for current player."
+    },
+    "DisplayText": {
+        "prefix": "DisplayText",
+        "body": [
+            "DisplayText(${1:Text}, ${2:AlwaysDisplay=4});"
+        ],
+        "description": "Display for current player: text."
+    },
+    "Draw": {
+        "prefix": "Draw",
+        "body": [
+            "Draw();"
+        ],
+        "description": "End the scenario in a draw for all players."
+    },
+    "GiveUnits": {
+        "prefix": "GiveUnits",
+        "body": [
+            "GiveUnits(${1:Count}, ${2:Unit}, ${3:Owner}, ${4:Where}, ${5:NewOwner});"
+        ],
+        "description": "Give quantity units owned by player at location to player."
+    },
+    "KillUnit": {
+        "prefix": "KillUnit",
+        "body": [
+            "KillUnit(${1:Unit}, ${2:Player});"
+        ],
+        "description": "Kill all units for player."
+    },
+    "KillUnitAt": {
+        "prefix": "KillUnitAt",
+        "body": [
+            "KillUnitAt(${1:Count}, ${2:Unit}, ${3:Where}, ${4:ForPlayer});"
+        ],
+        "description": "Kill quantity units for player at location."
+    },
+    "LeaderBoardControlAt": {
+        "prefix": "LeaderBoardControlAt",
+        "body": [
+            "LeaderBoardControlAt(${1:Unit}, ${2:Location}, ${3:Label});"
+        ],
+        "description": "Show Leader Board for most control of units at location. Display label: label"
+    },
+    "LeaderBoardControl": {
+        "prefix": "LeaderBoardControl",
+        "body": [
+            "LeaderBoardControl(${1:Unit}, ${2:Label});"
+        ],
+        "description": "Show Leader Board for most control of unit. Display label: label"
+    },
+    "LeaderBoardGreed": {
+        "prefix": "LeaderBoardGreed",
+        "body": [
+            "LeaderBoardGreed(${1:Goal});"
+        ],
+        "description": "Show Greed Leader Board for player closest to accumulation of number ore and gas."
+    },
+    "LeaderBoardKills": {
+        "prefix": "LeaderBoardKills",
+        "body": [
+            "LeaderBoardKills(${1:Unit}, ${2:Label});"
+        ],
+        "description": "Show Leader Board for most kills of unit. Display label: label"
+    },
+    "LeaderBoardScore": {
+        "prefix": "LeaderBoardScore",
+        "body": [
+            "LeaderBoardScore(${1:ScoreType}, ${2:Label});"
+        ],
+        "description": "Show Leader Board for most points. Display label: label"
+    },
+    "LeaderBoardResources": {
+        "prefix": "LeaderBoardResources",
+        "body": [
+            "LeaderBoardResources(${1:ResourceType}, ${2:Label});"
+        ],
+        "description": "Show Leader Board for accumulation of most resource. Display label: label"
+    },
+    "LeaderBoardGoalControlAt": {
+        "prefix": "LeaderBoardGoalControlAt",
+        "body": [
+            "LeaderBoardGoalControlAt(${1:Goal}, ${2:Unit}, ${3:Location}, ${4:Label});"
+        ],
+        "description": "Show Leader Board for player closest to control of number of units at location. Display label: label"
+    },
+    "LeaderBoardGoalControl": {
+        "prefix": "LeaderBoardGoalControl",
+        "body": [
+            "LeaderBoardGoalControl(${1:Goal}, ${2:Unit}, ${3:Label});"
+        ],
+        "description": "Show Leader Board for player closest to control of number of unit. Display label: label"
+    },
+    "LeaderBoardGoalKills": {
+        "prefix": "LeaderBoardGoalKills",
+        "body": [
+            "LeaderBoardGoalKills(${1:Goal}, ${2:Unit}, ${3:Label});"
+        ],
+        "description": "Show Leader Board for player closest to number kills of unit. Display label: label"
+    },
+    "LeaderBoardGoalScore": {
+        "prefix": "LeaderBoardGoalScore",
+        "body": [
+            "LeaderBoardGoalScore(${1:Goal}, ${2:ScoreType}, ${3:Label});"
+        ],
+        "description": "Show Leader Board for player closest to number points. Display label: label"
+    },
+    "LeaderBoardGoalResources": {
+        "prefix": "LeaderBoardGoalResources",
+        "body": [
+            "LeaderBoardGoalResources(${1:Goal}, ${2:ResourceType}, ${3:Label});"
+        ],
+        "description": "Show Leader Board for player closest to accumulation of number resource. Display label: label"
+    },
+    "LeaderBoardComputerPlayers": {
+        "prefix": "LeaderBoardComputerPlayers",
+        "body": [
+            "LeaderBoardComputerPlayers(${1:State});"
+        ],
+        "description": "Set use of computer players in leaderboard calculations."
+    },
+    "MinimapPing": {
+        "prefix": "MinimapPing",
+        "body": [
+            "MinimapPing(${1:Where});"
+        ],
+        "description": "Show minimap ping for current player at location."
+    },
+    "ModifyUnitEnergy": {
+        "prefix": "ModifyUnitEnergy",
+        "body": [
+            "ModifyUnitEnergy(${1:Count}, ${2:Unit}, ${3:Owner}, ${4:Where}, ${5:Percent});"
+        ],
+        "description": "Set energy points for quantity units owned by player at location to percent%."
+    },
+    "ModifyUnitHangarCount": {
+        "prefix": "ModifyUnitHangarCount",
+        "body": [
+            "ModifyUnitHangarCount(${1:Add}, ${2:Count}, ${3:Unit}, ${4:Owner}, ${5:Where});"
+        ],
+        "description": "Add at most quantity to hangar for quantity units at location owned by player."
+    },
+    "ModifyUnitHitPoints": {
+        "prefix": "ModifyUnitHitPoints",
+        "body": [
+            "ModifyUnitHitPoints(${1:Count}, ${2:Unit}, ${3:Owner}, ${4:Where}, ${5:Percent});"
+        ],
+        "description": "Set hit points for quantity units owned by player at location to percent%."
+    },
+    "ModifyUnitResourceAmount": {
+        "prefix": "ModifyUnitResourceAmount",
+        "body": [
+            "ModifyUnitResourceAmount(${1:Count}, ${2:Owner}, ${3:Where}, ${4:NewValue});"
+        ],
+        "description": "Set resource amount for quantity resource sources owned by player at location to quantity."
+    },
+    "ModifyUnitShields": {
+        "prefix": "ModifyUnitShields",
+        "body": [
+            "ModifyUnitShields(${1:Count}, ${2:Unit}, ${3:Owner}, ${4:Where}, ${5:Percent});"
+        ],
+        "description": "Set shield points for quantity units owned by player at location to percent%."
+    },
+    "MoveLocation": {
+        "prefix": "MoveLocation",
+        "body": [
+            "MoveLocation(${1:Location}, ${2:OnUnit}, ${3:Owner}, ${4:DestLocation});"
+        ],
+        "description": "Center location labeled location on units owned by player at location."
+    },
+    "MoveUnit": {
+        "prefix": "MoveUnit",
+        "body": [
+            "MoveUnit(${1:Count}, ${2:UnitType}, ${3:Owner}, ${4:StartLocation}, ${5:DestLocation});"
+        ],
+        "description": "Move quantity units for player at location to destination."
+    },
+    "MuteUnitSpeech": {
+        "prefix": "MuteUnitSpeech",
+        "body": [
+            "MuteUnitSpeech();"
+        ],
+        "description": "Mute all non-trigger unit sounds for current player."
+    },
+    "Order": {
+        "prefix": "Order",
+        "body": [
+            "Order(${1:Unit}, ${2:Owner}, ${3:StartLocation}, ${4:OrderType}, ${5:DestLocation});"
+        ],
+        "description": "Issue order to all units owned by player at location: order to destination."
+    },
+    "PauseGame": {
+        "prefix": "PauseGame",
+        "body": [
+            "PauseGame();"
+        ],
+        "description": "Pause the game."
+    },
+    "PauseTimer": {
+        "prefix": "PauseTimer",
+        "body": [
+            "PauseTimer();"
+        ],
+        "description": "Pause the countdown timer."
+    },
+    "PlayWAV": {
+        "prefix": "PlayWAV",
+        "body": [
+            "PlayWAV(${1:WAVName});"
+        ],
+        "description": "Play WAV file"
+    },
+    "PreserveTrigger": {
+        "prefix": "PreserveTrigger",
+        "body": [
+            "PreserveTrigger();"
+        ],
+        "description": "Preserve Trigger."
+    },
+    "RemoveUnit": {
+        "prefix": "RemoveUnit",
+        "body": [
+            "RemoveUnit(${1:Unit}, ${2:Player});"
+        ],
+        "description": "Remove all units for player."
+    },
+    "RemoveUnitAt": {
+        "prefix": "RemoveUnitAt",
+        "body": [
+            "RemoveUnitAt(${1:Count}, ${2:Unit}, ${3:Where}, ${4:ForPlayer});"
+        ],
+        "description": "Remove quantity units for player at location."
+    },
+    "RunAIScript": {
+        "prefix": "RunAIScript",
+        "body": [
+            "RunAIScript(${1:Script});"
+        ],
+        "description": "Execute AI script script."
+    },
+    "RunAIScriptAt": {
+        "prefix": "RunAIScriptAt",
+        "body": [
+            "RunAIScriptAt(${1:Script}, ${2:Where});"
+        ],
+        "description": "Execute AI script script at location."
+    },
+    "SetAllianceStatus": {
+        "prefix": "SetAllianceStatus",
+        "body": [
+            "SetAllianceStatus(${1:Player}, ${2:Status});"
+        ],
+        "description": "Set Player to Ally status."
+    },
+    "SetCountdownTimer": {
+        "prefix": "SetCountdownTimer",
+        "body": [
+            "SetCountdownTimer(${1:TimeModifier}, ${2:Number});"
+        ],
+        "description": "Modify Countdown Timer: Set duration seconds."
+    },
+    "SetDeaths": {
+        "prefix": "SetDeaths",
+        "body": [
+            "SetDeaths(${1:Player}, ${2:Modifier}, ${3:Number}, ${4:Unit});"
+        ],
+        "description": "Modify death counts for player: Set quantity for unit."
+    },
+    "SetDoodadState": {
+        "prefix": "SetDoodadState",
+        "body": [
+            "SetDoodadState(${1:State}, ${2:Unit}, ${3:Owner}, ${4:Where});"
+        ],
+        "description": "Set doodad state for units for player at location."
+    },
+    "SetInvincibility": {
+        "prefix": "SetInvincibility",
+        "body": [
+            "SetInvincibility(${1:State}, ${2:Unit}, ${3:Owner}, ${4:Where});"
+        ],
+        "description": "Set invincibility for units owned by player at location"
+    },
+    "SetMissionObjectives": {
+        "prefix": "SetMissionObjectives",
+        "body": [
+            "SetMissionObjectives(${1:Text});"
+        ],
+        "description": "Set Mission Objectives to: text."
+    },
+    "SetNextScenario": {
+        "prefix": "SetNextScenario",
+        "body": [
+            "SetNextScenario(${1:ScenarioName});"
+        ],
+        "description": "Load scenario after completion of current game."
+    },
+    "SetResources": {
+        "prefix": "SetResources",
+        "body": [
+            "SetResources(${1:Player}, ${2:Modifier}, ${3:Amount}, ${4:ResourceType});"
+        ],
+        "description": "Modify resources for player: Set quantity resource."
+    },
+    "SetScore": {
+        "prefix": "SetScore",
+        "body": [
+            "SetScore(${1:Player}, ${2:Modifier}, ${3:Amount}, ${4:ScoreType});"
+        ],
+        "description": "Modify score for player: Set quantity points."
+    },
+    "SetSwitch": {
+        "prefix": "SetSwitch",
+        "body": [
+            "SetSwitch(${1:Switch}, ${2:State});"
+        ],
+        "description": "Set switch."
+    },
+    "TalkingPortrait": {
+        "prefix": "TalkingPortrait",
+        "body": [
+            "TalkingPortrait(${1:Unit}, ${2:Time});"
+        ],
+        "description": "Show unit talking to current player for duration milliseconds."
+    },
+    "Transmission": {
+        "prefix": "Transmission",
+        "body": [
+            "Transmission(${1:Unit}, ${2:Where}, ${3:WAVName}, ${4:TimeModifier}, ${5:Time}, ${6:Text}, ${7:AlwaysDisplay=4});"
+        ],
+        "description": "Send transmission to current player from unit at location.\nPlay WAV file. Modify transmission duration: Set number milliseconds.\nDisplay the following text: Text"
+    },
+    "UnMuteUnitSpeech": {
+        "prefix": "UnMuteUnitSpeech",
+        "body": [
+            "UnMuteUnitSpeech();"
+        ],
+        "description": "Unmute all non-trigger unit sounds for current player."
+    },
+    "UnpauseGame": {
+        "prefix": "UnpauseGame",
+        "body": [
+            "UnpauseGame();"
+        ],
+        "description": "Unpause the game."
+    },
+    "UnpauseTimer": {
+        "prefix": "UnpauseTimer",
+        "body": [
+            "UnpauseTimer();"
+        ],
+        "description": "Unpause the countdown timer."
+    },
+    "Victory": {
+        "prefix": "Victory",
+        "body": [
+            "Victory();"
+        ],
+        "description": "End scenario in victory for current player."
+    },
+    "Wait": {
+        "prefix": "Wait",
+        "body": [
+            "Wait(${1:Time});"
+        ],
+        "description": "[Warning] Don't use Wait action UNLESS YOU KNOW WHAT YOU'RE DOING!"
+    },
+    "SetMemory": {
+        "prefix": "SetMemory",
+        "body": [
+            "SetMemory(${1:dest}, ${2:modtype}, ${3:value});"
+        ],
+        "description": "Modify death counts for player: Set quantity for unit."
+    },
+    "SetMemoryEPD": {
+        "prefix": "SetMemoryEPD",
+        "body": [
+            "SetMemoryEPD(${1:dest}, ${2:modtype}, ${3:value});"
+        ],
+        "description": "Modify death counts for player: Set quantity for unit."
+    },
+    "SetNextPtr": {
+        "prefix": "SetNextPtr",
+        "body": [
+            "SetNextPtr(${1:trg}, ${2:dest});"
+        ],
+        "description": "SetMemory(trg + 4, SetTo, dest)"
+    },
+    "Memory": {
+        "prefix": "Memory",
+        "body": [
+            "Memory(${1:dest}, ${2:cmptype}, ${3:value})"
+        ],
+        "description": "Player has suffered quantity deaths of unit."
+    },
+    "MemoryEPD": {
+        "prefix": "MemoryEPD",
+        "body": [
+            "MemoryEPD(${1:dest}, ${2:cmptype}, ${3:value})"
+        ],
+        "description": "Player has suffered quantity deaths of unit."
+    }
+}

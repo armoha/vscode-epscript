@@ -1,0 +1,50 @@
+{
+    "name": "epscript",
+    "displayName": "epScript",
+    "description": "Syntax highlighter and snippets for epScript",
+    "dependencies": {
+        "tar": ">=4.4.2"
+    },
+    "version": "0.0.1",
+    "author": "Armoha",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/armoha/vscode-epscript.git"
+    },
+    "engines": {
+        "vscode": "^1.29.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "epscript",
+                "aliases": [
+                    "epScript",
+                    "epscript",
+                    "eps"
+                ],
+                "extensions": [
+                    ".eps"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "epscript",
+                "scopeName": "source.eps",
+                "path": "./syntaxes/epScript.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "epscript",
+                "path": "./snippets/epscript.json"
+            }
+        ]
+    }
+}
