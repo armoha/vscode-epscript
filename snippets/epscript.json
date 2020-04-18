@@ -682,5 +682,13 @@
             "MemoryEPD(${1:dest}, ${2:cmptype}, ${3:value})"
         ],
         "description": "Player has suffered quantity deaths of unit."
+    },
+    
+    "dwread_epd": {
+        "prefix": "dwread_epd",
+        "body": [
+            "dwread_epd(${1:dest})"
+        ],
+        "description": "Read dword/epd value from epd."
     }
 }
